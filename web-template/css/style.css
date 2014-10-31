@@ -1,0 +1,67 @@
+/*!
+ * Stylesheet V.001
+ * Copyright Suhendar
+ * Licensed under Open SOurce
+ */
+ 
+*{
+	font-family: "Open Sans",sans-serif;
+	color:#222;
+ }
+ 
+ a{ color:#FFF}
+ 
+body{font-size:10px} 
+
+header {
+	height:32px;	
+	background:#222;
+	margin:0;
+	color:#FFF;
+}
+
+.glyphicon{
+	color:#FFF;
+}
+.navbar-default{
+    height: 32px; /* Whatever you want. */
+	background:#222;
+	border-color:none;
+}
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 32px;
+    height: 32px;
+    padding-top: 0;
+	color:#FFF;
+	font-size:12px
+}
+.title_nav{margin-top:5px}
+.navbar-nav li a:hover,.navbar-nav li a:focus {
+    background:#444;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+	padding:1px;
+}
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{
+	background:none;
+}
+#navbarCollapse {background:#222}
+.dropdown-bdo{ background:#444;}
+.input-xs{
+  line-height:10px;
+}
+
+#wrapper .row {
+	color:#222;
+}
+
+.panel-theme{
+	min-height:270px;
+}
+
+.number {
+	padding:5px;
+}

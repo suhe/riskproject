@@ -1,0 +1,73 @@
+/*!
+ * Stylesheet V.001
+ * Copyright Suhendar
+ * Licensed under Open SOurce
+ */
+ 
+nav.sidebar-menu-collapsed {
+  width: 42px;} 
+nav.sidebar-menu-expanded {
+  width: 106px; }
+nav.sidebar {
+  position: fixed;
+  top: 32px;
+  left: 0px;
+  height: 100%;
+  background: none repeat scroll 0 0 #222;
+  color: white;
+  padding: 20px 10px; }
+nav.sidebar a#justify-icon {
+    outline: 0;
+    color: white;
+    font-size: 14px;
+    font-style: normal; }
+nav.sidebar ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px; }
+nav.sidebar ul li {
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    list-style-type: none; 
+	
+}
+nav.sidebar ul li a.expandable {
+    outline: 0;
+    color: #0074A2;
+    text-decoration: none;
+    font-size: 14px; 
+}
+
+nav.sidebar ul li a.expandable:hover {
+    color: red;
+}
+nav.sidebar ul li a.expandable span.expanded-element {
+    margin-left: 2px;
+    display: none;
+    font-size: 10px;
+    position: relative;
+    bottom: 2px; 
+}
+
+nav.sidebar ul li:hover {
+    background: none repeat scroll 0 0 #0074A2;
+	border-radius: 2px;
+	padding: 2px 5px; 
+	
+	margin-left: -5px;
+}
+
+nav.sidebar ul li.active {
+    background: none repeat scroll 0 0 #0074A2;
+    border-radius: 2px;
+    
+    margin-left: -5px;
+    padding: 2px 5px; 
+}
+nav.sidebar ul li.active a.expandable {
+    color: #0074A2 !important; 
+}
+nav.sidebar ul li.active a.expandable:hover {
+    color: #0074A2 !important; 
+}
