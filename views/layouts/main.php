@@ -1,16 +1,24 @@
+<?php
+/** use Application **/
+use yii\helpers\Html;
+use app\assets\AppAsset;
+
+/** Register App **/
+AppAsset::register($this);
+?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Yii::$app->language ?>">
 <head>
-<title>RISK MANAGEMENT</title>
+<?php $this->head() ?>    
+<title><?= Html::encode($this->title)?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Latest CSS -->
-<link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" href="css/bootstrap-theme.css" />
-<link rel="stylesheet" href="css/normalize.css" />
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/sidebar.css" />
+<meta charset="<?= Yii::$app->charset ?>"/>
+<?= Html::csrfMetaTags() ?>
+
 </head>
 <body>
+<?php $this->beginBody() ?>    
 <header>
 	 <nav role="navigation" class="navbar-default navbar-fixed-top">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -97,13 +105,11 @@
 
 <section>
     <div class="container-fluid" id="wrapper" style="margin-left:30px;margin-top:10px">
-        <?= $content ?>
+        <?=$content?>
     </div>
+    
 </section>
-
-<!-- Latest JavaScript -->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/sidebar.js"></script>
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
