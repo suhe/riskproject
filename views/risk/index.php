@@ -86,7 +86,7 @@ use yii\helpers\Html;
 	<?php foreach($risk_client as $v){ ?>
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading text-left"><strong><?=$v['client_name']?></strong></div>
+			<div class="panel-heading text-left"><strong><?=$v->client_name?></strong></div>
 				<div class="panel-body text-center">
 					<div class="row">
 						<div class="col-md-6">

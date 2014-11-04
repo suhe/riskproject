@@ -5,6 +5,8 @@ use yii\db\ActiveRecord;
 
 
 class Risk extends ActiveRecord{
+    
+    
     /**
      * @return string the name of the table associated with this ActiveRecord class.
      */

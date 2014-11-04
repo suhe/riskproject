@@ -13,7 +13,7 @@ AppAsset::register($this);
 <?php $this->head() ?>
 <head>
  <?= Html::csrfMetaTags() ?>
-<title><?= Html::encode($this->title) ?></title>
+<title><?=Html::encode(\Yii::$app->name);?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?= Yii::$app->charset ?>"/>
 </head>
