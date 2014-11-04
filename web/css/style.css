@@ -62,6 +62,7 @@ header {
 	min-height:270px;
 }
 
-.number {
-	padding:5px;
+ol {
+	padding-left:10px;
 }
+

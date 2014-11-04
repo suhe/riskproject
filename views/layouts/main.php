@@ -6,19 +6,19 @@ use app\assets\AppAsset;
 /** Register App **/
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?=Yii::$app->language?>">
+<?php $this->head() ?>
 <head>
-<?php $this->head() ?>    
-<title><?= Html::encode($this->title)?></title>
+ <?= Html::csrfMetaTags() ?>
+<title><?= Html::encode($this->title) ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?= Yii::$app->charset ?>"/>
-<?= Html::csrfMetaTags() ?>
-
 </head>
-<body>
-<?php $this->beginBody() ?>    
+<?php $this->beginBody() ?>
+<body>   
 <header>
 	 <nav role="navigation" class="navbar-default navbar-fixed-top">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -107,9 +107,10 @@ AppAsset::register($this);
     <div class="container-fluid" id="wrapper" style="margin-left:30px;margin-top:10px">
         <?=$content?>
     </div>
-    
 </section>
-<?php $this->endBody() ?>
+
 </body>
+<?php $this->endBody() ?>
+
 </html>
 <?php $this->endPage() ?>
