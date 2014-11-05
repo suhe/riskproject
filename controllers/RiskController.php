@@ -13,7 +13,7 @@ class RiskController extends Controller{
     16=>'P',17=>'Q',18=>'R',19=>'S',20=>'T',21=>'U',22=>'V',23=>'W',24=>'X',25=>'Y',26=>'Z'
     );
     
-    public function actionIndex($id=''){
+    public function actionIndex($id=1){
         return $this->render('index',[
         'risk' => Risk::getSingleData_Risk($id),
         'nav_item' => $this->item_sess_a,
