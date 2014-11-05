@@ -1,6 +1,7 @@
 <?php
 /** use Application **/
 use yii\helpers\Html;
+use yii\helpers\BaseUrl;
 use app\assets\AppAsset;
 
 /** Register App **/
@@ -13,7 +14,7 @@ AppAsset::register($this);
 <?php $this->head() ?>
 <head>
  <?= Html::csrfMetaTags() ?>
-<title><?=Html::encode(\Yii::$app->name);?></title>
+<title><?=Html::encode(\Yii::$app->name).'-'.$this->title;?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?= Yii::$app->charset ?>"/>
 </head>
@@ -28,9 +29,10 @@ AppAsset::register($this);
                 <span class="glyphicon glyphicon-user"></span>
             </button>
             <a href="#" class="navbar-brand"><img src="img/logo.png" /></a>
-			<a class="navbar-brand" href="#"><i class="glyphicon glyphicon-signal"></i> Risk No: A</a>
+			<a class="navbar-brand" href="#"><i class="glyphicon glyphicon-signal"></i> Risk Register Final</a>
 			<!--<a class="btn btn-default btn-sm active" type="submit" style="min-width:120px"><i class="glyphicon glyphicon-arrow-left"></i> Previous</a>-->
-			<a href="index2.html" class="btn btn-primary btn-sm" type="submit" style="min-width:120px">Next <i class="glyphicon glyphicon-arrow-right"></i></a>
+                        
+                        <!--<a href="<?=BaseUrl::to('risk/index/1')?>" class="btn btn-primary btn-sm" type="submit" style="min-width:120px">Next <i class="glyphicon glyphicon-arrow-right"></i></a>-->
 	 </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -70,38 +72,7 @@ AppAsset::register($this);
     </nav>
 </header>
 
-<sidebar>
-	<nav class='sidebar sidebar-menu-collapsed'>
-      <a href='#' id='justify-icon'><span class='glyphicon glyphicon-align-justify'></span></a>
-      <ul>
-        <li class='active'>
-          <a class='expandable' href='#' title='Dashboard'>
-            <span class='glyphicon glyphicon-home collapsed-element'></span>
-            <span class='expanded-element'>Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a class='expandable' href='#' title='APIs'>
-            <span class='glyphicon glyphicon-wrench collapsed-element'></span>
-            <span class='expanded-element'>APIs</span>
-          </a>
-        </li>
-        <li>
-          <a class='expandable' href='#' title='Settings'>
-            <span class='glyphicon glyphicon-cog collapsed-element'></span>
-            <span class='expanded-element'>Settings</span>
-          </a>
-        </li>
-        <li>
-          <a class='expandable' href='#' title='Account'>
-            <span class='glyphicon glyphicon-user collapsed-element'></span>
-            <span class='expanded-element'>Account</span>
-          </a>
-        </li>
-      </ul>
-      
-    </nav>
-</sidebar>
+
 
 <section>
     <div class="container-fluid" id="wrapper" style="margin-left:30px;margin-top:10px">

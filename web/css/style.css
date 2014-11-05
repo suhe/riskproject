@@ -66,3 +66,12 @@ ol {
 	padding-left:10px;
 }
 
+/**footer dev**/
+footer .navbar{height:10px}
+footer .navbar-collapse.in {
+    bottom: 0px;
+    position: absolute;
+    background-color:#222;
+    width:100%;
+}
+

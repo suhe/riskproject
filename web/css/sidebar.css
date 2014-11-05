@@ -16,10 +16,12 @@ nav.sidebar {
   background: none repeat scroll 0 0 #222;
   color: white;
   padding: 20px 10px; }
+
+
 nav.sidebar a#justify-icon {
     outline: 0;
     color: white;
-    font-size: 14px;
+    font-size: 13px;
     font-style: normal; }
 nav.sidebar ul {
     margin: 0;

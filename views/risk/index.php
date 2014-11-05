@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\BaseUrl;
 ?>
 
 <!--Start of Risk A-->
@@ -70,7 +71,7 @@ use yii\helpers\Html;
 						<div class="panel panel-default">
 							<div class="panel-heading text-center"><strong>Inherent Risk Rating</strong></div>
 							<div class="panel-body text-center">
-								<strong><?=$risk->risk_inherent_rating?></strong>
+								<span class="badge"><strong><?=$risk->risk_inherent_rating?></strong></span>
 							</div>
 						</div>	
 					</div>
@@ -138,3 +139,22 @@ use yii\helpers\Html;
 		  
 </div>
 <!--End of Risk A-->
+
+<sidebar>
+	<nav class='sidebar sidebar-menu-collapsed'>
+      <a href='#' id='justify-icon' title="Next Slide"><span class='glyphicon glyphicon-align-justify'></span></a>
+      <ul>
+        <?php foreach($nav_item as $key => $name){
+	?>
+        <li <?=$nav_id==$key?'class="active"':''?>>
+          <a class='expandable' href='<?=BaseUrl::to($key)?>' title='<?=$name?>'>
+            <span class='glyphicon collapsed-element'><?=$name?></span>
+            <span class='expanded-element'>A</span>
+          </a>
+        </li>
+	<?php } ?>
+        
+      </ul>
+      
+    </nav>
+</sidebar>

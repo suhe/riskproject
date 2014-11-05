@@ -371,6 +371,7 @@ class Controller extends Component implements ViewContextInterface
         } else {
             return $output;
         }
+        
     }
 
     /**

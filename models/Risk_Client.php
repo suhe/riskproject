@@ -19,10 +19,10 @@ class Risk_Client extends ActiveRecord{
         return $this->hasMany(Client::className(),['client_id'=>'client_id']);
     }
     
-    public function getResultData_Risk_Client(){
+    public function getResultData_Risk_Client($id){
         $query = Risk_Client::find()
-        ->joinWith(['client']);
-        
+        ->where(['risk.risk_id' => $id])
+        ->joinWith(['client','risk']);
         return $query
             ->select(['client_name','client.client_id'])
             ->all();
