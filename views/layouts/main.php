@@ -28,7 +28,7 @@ AppAsset::register($this);
                 <span class="sr-only">Toggle navigation</span>
                 <span class="glyphicon glyphicon-user"></span>
             </button>
-            <a href="#" class="navbar-brand"><img src="img/logo.png" /></a>
+            <a href="#" class="navbar-brand"><img src="/riskproject/web/img/logo.png" /></a>
 			<a class="navbar-brand" href="#"><i class="glyphicon glyphicon-signal"></i> Risk Register Final</a>
 			<!--<a class="btn btn-default btn-sm active" type="submit" style="min-width:120px"><i class="glyphicon glyphicon-arrow-left"></i> Previous</a>-->
                         
@@ -58,14 +58,14 @@ AppAsset::register($this);
           </li>
         </ul>
 		
-		<ul class="nav navbar-nav navbar-right" style="margin-left:25px">
+		<!--<ul class="nav navbar-nav navbar-right" style="margin-left:25px">
 			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Howdy , Admin Risk</a>
 			  <ul class="dropdown-menu dropdown-bdo">
 				<li><a href="#">Visit Bdo.co.id</a></li>
 				<li><a href="#">About Program</a></li>
 			  </ul>
 			 </li>
-		</ul>
+		</ul>-->
 		  
 		
         </div>

@@ -13,12 +13,20 @@ class RiskController extends Controller{
     16=>'P',17=>'Q',18=>'R',19=>'S',20=>'T',21=>'U',22=>'V',23=>'W',24=>'X',25=>'Y',26=>'Z'
     );
     
+    public $item_sess_b = array(
+    27=>'AA',28=>'AB',29=>'AC',30=>'AD',31=>'AE',32=>'AF',33=>'AG',34=>'AH',35=>'AI',36=>'AJ',37=>'AK',38=>'AL',
+    39=>'AM',40=>'AN',41=>'AO',42=>'AP',43=>'AQ',44=>'AR',45=>'AS',46=>'AT',47=>'AU',48=>'AV'
+    );
+    
     public function actionIndex($id=1){
+        if(!$id) $id=1;
+        $risk = new Risk();
+        $risk_client = new Risk_Client();
         return $this->render('index',[
-        'risk' => Risk::getSingleData_Risk($id),
-        'nav_item' => $this->item_sess_a,
+        'risk' => $risk->getSingleData_Risk($id),
+        'nav_item' => $id<27 ? $this->item_sess_a : $this->item_sess_b,
         'nav_id' => $id, 
-        'risk_client' => Risk_Client::getResultData_Risk_Client($id),
+        'risk_client' => $risk_client->getResultData_Risk_Client($id),
         ]);
     }
     

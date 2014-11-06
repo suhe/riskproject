@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\helpers\BaseUrl;
+use yii\helpers\Url;
 ?>
 
 <!--Start of Risk A-->
@@ -141,16 +141,14 @@ use yii\helpers\BaseUrl;
 <!--End of Risk A-->
 
 <sidebar>
-	<nav class='sidebar sidebar-menu-collapsed'>
-      <a href='#' id='justify-icon' title="Next Slide"><span class='glyphicon glyphicon-align-justify'></span></a>
+      <nav class='sidebar sidebar-menu-collapsed'>
+      <?=Html::a('<span class="glyphicon glyphicon-align-justify"></span>','/riskproject/web/risk/index/'.($nav_id>=27?'1':'27'),array('title'=>$nav_id<27?'Next Slide':'Previous Slide'))?>	
+      <!--<a href='#' id='justify-icon' title="Next Slide"><span class='glyphicon glyphicon-align-justify'></span></a>-->
       <ul>
         <?php foreach($nav_item as $key => $name){
 	?>
         <li <?=$nav_id==$key?'class="active"':''?>>
-          <a class='expandable' href='<?=BaseUrl::to($key)?>' title='<?=$name?>'>
-            <span class='glyphicon collapsed-element'><?=$name?></span>
-            <span class='expanded-element'>A</span>
-          </a>
+	  <?= Html::a('<span class="glyphicon collapsed-element">'.$name.'</span><span class="expanded-element">'.$name.'</span>','/riskproject/web/risk/index/'.$key,array('class'=>'expandable'));?>
         </li>
 	<?php } ?>
         
