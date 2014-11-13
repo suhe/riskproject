@@ -2,6 +2,7 @@
 /** use Application **/
 use yii\helpers\Html;
 use yii\helpers\BaseUrl;
+use yii\helpers\Url;
 use app\assets\AppAsset;
 
 /** Register App **/
@@ -37,36 +38,39 @@ AppAsset::register($this);
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
         
-		<ul class="nav navbar-nav navbar-right" style="margin-left:38px">
-          <li>
-            <div class="dropdown">
-			  <a class="dropdown-toggle btn btn-primary btn-sm" data-toggle="dropdown" href="#">Sign Up</a> 
+        <?php if (!Yii::$app->session->get('user_id')) { ?>
+	<ul class="nav navbar-nav navbar-right" style="margin-right:5px">
+          <li><a class="btn btn-primary btn-sm"  href="<?=Url::to(['site/login'])?>">Sign In</a></li>
+            <!--<div class="dropdown">
+	    <a class="dropdown-toggle btn btn-primary btn-sm" data-toggle="dropdown" href="#">Sign In</a> 
               <div class="dropdown-menu" style="padding: 10px; background: #222">
-                <form action="" role="form">
+                <form action="<?=Url::to(['site/login'])?>" role="form" method="post">
                   <div class="form-group">
-                    <label for="user">User</label>
-                    <input type="text" class="form-control" id="user" placeholder="User" />
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" />
+                    <label for="user" style="color:#FFF">User</label>
+                    <input type="text" class="form-control" id="user" name="User[user_name]" placeholder="User" />
+                    <label for="password" style="color:#FFF">Password</label>
+                    <input type="password" class="form-control" name="User[user_password]" id="password" placeholder="Password" />
                   </div>
-                  <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
+                  <button type="submit" class="btn btn-primary btn-sm">Login</button>
 				  <a class="dropdown-toggle btn btn-primary btn-sm" data-toggle="dropdown" href="#">Register</a> 
                 </form>
               </div>
-            </div>
+            </div>-->
 
           </li>
         </ul>
-		
-		<!--<ul class="nav navbar-nav navbar-right" style="margin-left:25px">
-			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Howdy , Admin Risk</a>
+        <?php } ?>
+	<?php if (Yii::$app->session->get('user_id')) { ?>	
+	<ul class="nav navbar-nav navbar-right" style="margin-right:15px">
+			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Howdy  <i class="glyphicon glyphicon-user"></i>  <?= Yii::$app->session->get('user_name')?></a>
 			  <ul class="dropdown-menu dropdown-bdo">
-				<li><a href="#">Visit Bdo.co.id</a></li>
-				<li><a href="#">About Program</a></li>
+				<li><a href="<?=Url::to(['user/index'])?>"> <i class="glyphicon glyphicon-user"></i> Risk User</a></li>
+                                <li><a href="<?=Url::to(['site/chpassword'])?>"> <i class="glyphicon glyphicon-wrench"></i> Change Password</a></li>
+                                <li><a href="<?=Url::to(['site/logout'])?>"> <i class="glyphicon glyphicon-remove-sign"></i> Logout</a></li>
 			  </ul>
 			 </li>
-		</ul>-->
-		  
+	</ul>
+	 <?php } ?>	  
 		
         </div>
     </nav>

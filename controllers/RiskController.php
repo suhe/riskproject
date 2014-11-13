@@ -30,7 +30,4 @@ class RiskController extends Controller{
         ]);
     }
     
-    public function actionHero($id){
-        echo $id;
-    }
 }
