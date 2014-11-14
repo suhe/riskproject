@@ -19,9 +19,20 @@ $config = [
             'rules' => array(
             '<controller:\w+>/<id:\d+>' => '<controller>/view',
             '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-            '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-        ),
-
+            '<controller:\w+>/<action:\w+>' => '<controller>/<action>'),
+        ],    
+        'i18n' => [                                          
+            'translations' => [                      
+                'app*'=>[
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'en-EN',
+                    'basePath' => '@app/language',
+                    'fileMap' => [
+                    'app' => 'app.php',
+                    'app/error' => 'error.php',
+                    ],
+                ],
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

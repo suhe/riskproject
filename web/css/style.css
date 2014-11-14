@@ -92,3 +92,7 @@ table thead tr > th{
 	font-size:8pt;
 }
 
+.form-inline .help-block{
+  display: inline;	
+}
+
