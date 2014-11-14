@@ -96,3 +96,4 @@ table thead tr > th{
   display: inline;	
 }
 
+input[type="checkbox"] {margin:0}

@@ -16,7 +16,7 @@ use yii\helpers\Html;
         ?>
         <?=$form->field($user,'user_name',['inputOptions' => ['value' => Yii::$app->session['user_query']]]);?>
         <?=Html::submitButton(Yii::t('app','search'),['class' => 'btn btn-primary','name' => 'login-button'])?>
-        <?=Html::a(Yii::t('app','add new'),'user/add',['class' => 'btn btn-primary'])?>
+        <?=Html::a(Yii::t('app','add new'),Url::to(['user/add/']),['class' => 'btn btn-primary'])?>
         <?php ActiveForm::end(); ?>
         <!--
          <form class="form-inline pull-right" role="form" method="post" action="<?=Url::to(['user/search/'])?>">

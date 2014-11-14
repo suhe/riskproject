@@ -18,5 +18,13 @@ class UserController extends Controller
             'users' => $users,
         ]);
     }
+    
+    public function actionAdd(){
+        $user = new User();
+        return $this->render('form',[
+           'user' => $user
+        ]
+        );
+    }
 
 }
