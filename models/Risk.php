@@ -25,6 +25,13 @@ class Risk extends ActiveRecord{
         return $risk;
     }
     
+    public function getAllRiskData(){
+        $risks = Risk::find()
+        ->select(['risk_id','risk_no']) 
+        ->all();
+        return $risks;
+    }
+    
     public function getResultData_Risk_Client(){
         return Risk::find()->joinWith(['riskclients'])->all();
     }

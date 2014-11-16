@@ -4,6 +4,8 @@ namespace app\controllers;
 use yii;
 use yii\web\Controller;
 use app\models\User;
+use app\models\Risk;
+use app\models\RiskUser;
 
 class UserController extends Controller
 {
@@ -21,10 +23,48 @@ class UserController extends Controller
     
     public function actionAdd(){
         $user = new User();
-        return $this->render('form',[
-           'user' => $user
-        ]
-        );
+        if ($user->load(Yii::$app->request->post())){
+            $frisk = Yii::$app->request->post('risk');
+            $user->getUserSave();
+            //echo $frisk[0];
+            //$this->redirect('user/index');
+            //$total = count($frisk);
+            //$i=0;
+            //while($i<$total){
+            if($user = $user->findByUsername()){
+                $risk = new RiskUser();
+                $risk->user_id = $user->user_id;
+                $risk->risk_id = 1;
+                $risk->save();
+                //$i++;
+            }    
+            //}
+        }
+        else {
+            
+        }
+        $risks = new Risk();
+            return $this->render('form',[
+               'user'  => $user,
+               'risk'  => $risks,
+               'risks' => $risks->getAllRiskData()
+            ]
+            );
+    }
+    
+    public function actionSave(){
+        $risk = Yii::$app->request->post('risk');
+        $total = count($risk);
+        $i=0;
+        while($i<$total){
+            echo $risk[$i];
+            $i++;
+        }
+        /*$user = new User();
+        $user->user_name = 'Qiang';
+        $user->user_password = 'Qiang';
+        $user->user_group = 2;
+        $user->save();*/
     }
 
 }

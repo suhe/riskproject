@@ -5,9 +5,11 @@ use yii;
 use yii\db\ActiveRecord;
 use yii\helpers\Security;
 
+
 class User extends ActiveRecord {
     public $rememberMe = true;
     public $_user=false;
+    //public $user_name;
     //public $_query = $_SESSION['user_query'];
     
     /**
@@ -24,7 +26,7 @@ class User extends ActiveRecord {
         return [
             [['user_name', 'user_password'], 'required'],
             ['rememberMe', 'boolean'],
-            //['password', 'validatePassword'],
+            [['user_name'],'validateUserName']
         ];
     }
     
@@ -77,6 +79,34 @@ class User extends ActiveRecord {
         if($this->user_name)
            $user = $user->where(['like','user_name',$this->user_name]);
         $user = $user->all();
+        return $user;
+    }
+    
+    public function getUserSave(){
+        if ($this->validate()) {
+            $user = new User();
+            $user->user_name = $this->user_name;
+            $user->user_password = $this->user_password;
+            $user->user_group = 2;
+            $user->save();
+        } else {
+            return false;
+        }    
+    }
+    
+    /**
+     * Validate User if exist
+     **/
+    public function validateUserName(){
+        if($this->findByUsername())
+          $this->addError('user_name', 'Username is available in database!');
+    } 
+    
+    public function findByUsername()
+    {
+        $user = User::find()
+        ->where(['user_name'=>$this->user_name])
+        ->one();
         return $user;
     }
     

@@ -13,7 +13,7 @@ use yii\bootstrap\ActiveForm;
         'method' => 'POST',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+            'template' => "{label}\n<div class=\"col-md-8\">{input}{error}</div>\n<div class=\"col-md-8\"></div>",
             'labelOptions' => ['class' => 'col-md-1 control-label'],
         ],
         ]);
@@ -24,12 +24,11 @@ use yii\bootstrap\ActiveForm;
         <div class="form-group">
             <label class="col-md-1 control-label" for="chex">Risk No</label>
             <div class="col-md-11">
-                <div class="checkbox">
-                    <label><input type="checkbox" value="">Risk A</label>
+                <?php foreach($risks as $risk){ ?>
+                <div class="checkbox col-md-1">
+                    <label><input type="checkbox" name="risk[]" value="<?=$risk->risk_id?>" /><?=$risk->risk_no?> </label> 
                 </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="">Risk B</label>
-                </div>
+                <?php } ?>
             </div>
         </div>
         
