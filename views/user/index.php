@@ -49,7 +49,7 @@ use yii\helpers\Html;
                     <td><?=$i?></td>
                     <td class="text-left"><?=$user->user_name?></td>
                     <td class="text-left"><?=$user->user_password?></td>
-                    <td class="text-left">A,B,C,D</td>
+                    <td class="text-left"><?=$user->user_vrisk?></td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" 

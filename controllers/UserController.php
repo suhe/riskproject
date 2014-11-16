@@ -23,25 +23,36 @@ class UserController extends Controller
     
     public function actionAdd(){
         $user = new User();
-        if ($user->load(Yii::$app->request->post())){
+        $user->setScenario('insert');
+        if ($user->load(Yii::$app->request->post())) {
             $frisk = Yii::$app->request->post('risk');
-            $user->getUserSave();
-            //echo $frisk[0];
-            //$this->redirect('user/index');
-            //$total = count($frisk);
-            //$i=0;
-            //while($i<$total){
-            if($user = $user->findByUsername()){
-                $risk = new RiskUser();
-                $risk->user_id = $user->user_id;
-                $risk->risk_id = 1;
-                $risk->save();
-                //$i++;
-            }    
-            //}
+            if($user->getUserSave()){
+                if($user = $user->findByUsername()){
+                    $risk = new RiskUser();
+                    $total = count($frisk);
+                    $i=0;
+                    $vrisk = '';
+                    while(($i<$total) && ($i<$total) ){
+                        if($i>0) $vrisk.=';';
+                        $mrisk = new Risk();
+                        $mrisk = $mrisk->getSingleData_Risk($frisk[$i]);
+                        $vrisk.= $mrisk->risk_no;
+                        $risk = new RiskUser();
+                        $risk->user_id = $user->user_id;
+                        $risk->risk_id = $frisk[$i];
+                        $risk->save();
+                        $i++;
+                    }
+                    //update user column vrisk
+                    
+                    $user->setScenario('change');
+                    $user = User::findOne($user->user_id);
+                    $user->user_vrisk = $vrisk;
+                    $user->update();
+                }
+            }
         }
-        else {
-            
+        else {    
         }
         $risks = new Risk();
             return $this->render('form',[

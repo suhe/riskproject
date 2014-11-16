@@ -26,7 +26,7 @@ class User extends ActiveRecord {
         return [
             [['user_name', 'user_password'], 'required'],
             ['rememberMe', 'boolean'],
-            [['user_name'],'validateUserName']
+            [['user_name'],'validateUserName','on'=>'insert']
         ];
     }
     
@@ -89,6 +89,7 @@ class User extends ActiveRecord {
             $user->user_password = $this->user_password;
             $user->user_group = 2;
             $user->save();
+            return true;
         } else {
             return false;
         }    
