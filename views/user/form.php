@@ -13,13 +13,13 @@ use yii\bootstrap\ActiveForm;
         'method' => 'POST',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-md-8\">{input}{error}</div>\n<div class=\"col-md-8\"></div>",
+            'template' => "{label}\n<div class=\"col-md-8\">{input}{error}</div>\n",
             'labelOptions' => ['class' => 'col-md-1 control-label'],
         ],
         ]);
         ?>
-        <?=$form->field($user,'user_name') ?>
-        <?=$form->field($user,'user_password')->passwordInput() ?>
+        <?=$form->field($user,'user_name')->textInput(['value' => $form_user?$form_user->user_name:'','readonly'=>$form_user?true:false]);?>
+        <?=$form->field($user,'user_password')->passwordInput(['value' => $form_user?$form_user->user_password:'']) ?>
         
         <div class="form-group">
             <label class="col-md-1 control-label" for="chex">Risk No</label>

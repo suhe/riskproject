@@ -88,11 +88,20 @@ class User extends ActiveRecord {
             $user->user_name = $this->user_name;
             $user->user_password = $this->user_password;
             $user->user_group = 2;
-            $user->save();
+            $user2->save();
             return true;
         } else {
             return false;
         }    
+    }
+    
+    public function getUserUpdate($id){
+        $user = new User();
+        $user = User::findOne($id);
+        $user->user_password = $this->user_password;
+        $user->user_group = 2;
+        $user->update();
+        return true;
     }
     
     /**
