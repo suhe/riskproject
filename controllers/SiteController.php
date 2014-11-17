@@ -57,7 +57,8 @@ class SiteController extends Controller
     public function actionLogin(){
         $model = new User();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $this->redirect(array('risk/index'));
+			if(Yii::$app->session['user_group']===1) $this->redirect(array('user/index'));
+            elseif(Yii::$app->session['user_group']===2) $this->redirect(array('risk/index'));
         } else {
             return $this->render('login', [
                 'model' => $model,

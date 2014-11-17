@@ -54,6 +54,7 @@ class User extends ActiveRecord {
             if(count($user=$this->getUserAndPassword())>0){
                 Yii::$app->session->set('user_id',$user['user_id']);
                 Yii::$app->session->set('user_name',$user['user_name']);
+                Yii::$app->session->set('user_group',$user['user_group']);
                 return true;
             } else {
                 Yii::$app->session->setFlash('msg','Username or Password not Registered');

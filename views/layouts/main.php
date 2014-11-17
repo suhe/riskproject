@@ -64,8 +64,10 @@ AppAsset::register($this);
 	<ul class="nav navbar-nav navbar-right" style="margin-right:15px">
 			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Howdy  <i class="glyphicon glyphicon-user"></i>  <?= Yii::$app->session->get('user_name')?></a>
 			  <ul class="dropdown-menu dropdown-bdo">
+			        <?php if (Yii::$app->session->get('user_group')===1) { ?> 
 				<li><a href="<?=Url::to(['user/index'])?>"> <i class="glyphicon glyphicon-user"></i> Risk User</a></li>
-                                <li><a href="<?=Url::to(['user/chpassword'])?>"> <i class="glyphicon glyphicon-wrench"></i> Change Password</a></li>
+                                <?php } ?>
+				<li><a href="<?=Url::to(['user/chpassword'])?>"> <i class="glyphicon glyphicon-wrench"></i> Change Password</a></li>
                                 <li><a href="<?=Url::to(['site/logout'])?>"> <i class="glyphicon glyphicon-remove-sign"></i> Logout</a></li>
 			  </ul>
 			 </li>
