@@ -12,7 +12,7 @@ class RiskUser extends ActiveRecord{
     public static function tableName(){
         return 'risk_user';
     }
-    
+
     /**
      * @return array the validation rules.
      */
@@ -22,6 +22,11 @@ class RiskUser extends ActiveRecord{
         ];
     }
     
-    
+    /**
+     * Join to Model::Risk
+     **/
+    public function getRisk(){
+        return $this->hasMany(Risk::className(),['risk_id' => 'risk_id']);
+    }
     
 }

@@ -14,9 +14,9 @@ use yii\helpers\Html;
                 'options' => ['class' => 'form-inline pull-right']
               ]);    
         ?>
-        <?=$form->field($user,'user_name',['inputOptions' => ['value' => Yii::$app->session['user_query']]]);?>
-        <?=Html::submitButton(Yii::t('app','search'),['class' => 'btn btn-primary','name' => 'login-button'])?>
-        <?=Html::a(Yii::t('app','add new'),Url::to(['user/add/']),['class' => 'btn btn-primary'])?>
+        <?=$form->field($user,'user_name',['inputOptions' => ['class' => 'form-control input-sm' ]]);?>
+        <?=Html::submitButton(Yii::t('app','search'),['class' => 'btn btn-primary btn-sm','name' => 'login-button'])?>
+        <?=Html::a(Yii::t('app','add new'),Url::to(['user/add/']),['class' => 'btn btn-primary btn-sm'])?>
         <?php ActiveForm::end(); ?>
         <!--
          <form class="form-inline pull-right" role="form" method="post" action="<?=Url::to(['user/search/'])?>">
@@ -58,7 +58,7 @@ use yii\helpers\Html;
                             </button>
                             <ul class="dropdown-menu pull-right" role="menu">
                                <li><a href="<?=Url::to(['user/edit/'.$user->user_id])?>"><i style="color:#222" class="glyphicon glyphicon-pencil"></i> Edit</a></li>
-                               <li><a href="<?=Url::to(['user/remove/'.$user->user_id])?>"><i style="color:#222" class="glyphicon glyphicon-trash"></i> Remove</a></li>
+                               <li><a onclick='return confirm("Are You Sure Want to Remove : <?=$user->user_name?> !")' href="<?=Url::to(['user/remove/'.$user->user_id])?>"><i style="color:#222" class="glyphicon glyphicon-trash"></i> Remove</a></li>
                             </ul>
                          </div>
                     </td>

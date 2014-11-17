@@ -1,6 +1,6 @@
 <?php
 namespace app\controllers;
-
+use yii;
 use yii\web\Controller;
 use app\models\Risk;
 use app\models\Risk_Client;
@@ -18,16 +18,26 @@ class RiskController extends Controller{
     39=>'AM',40=>'AN',41=>'AO',42=>'AP',43=>'AQ',44=>'AR',45=>'AS',46=>'AT',47=>'AU',48=>'AV'
     );
     
-    public function actionIndex($id=1){
-        if(!$id) $id=1;
+    public function actionIndex($id=0){
+        if(!Yii::$app->session->get('user_id')) $this->redirect(['site/login']); //check user
         $risk = new Risk();
+        $data = $risk->getStartRiskUserSelectionData(Yii::$app->session->get('user_id'));
+        if(count($data)<1) $this->redirect(['risk/blank']);
+        if(!$id) $id = $data->risk_id;
+        
+       
         $risk_client = new Risk_Client();
         return $this->render('index',[
-        'risk' => $risk->getSingleData_Risk($id),
+        'risk' => $risk->getSingleRiskUserSelectionData($id,Yii::$app->session->get('user_id')),
+        'risk_item' => $risk->getAllRiskUserSelectionData(Yii::$app->session->get('user_id')),
         'nav_item' => $id<27 ? $this->item_sess_a : $this->item_sess_b,
         'nav_id' => $id, 
         'risk_client' => $risk_client->getResultData_Risk_Client($id),
         ]);
+    }
+    
+    public function actionBlank(){
+        return $this->render('blank');
     }
     
 }

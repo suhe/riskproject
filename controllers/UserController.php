@@ -50,6 +50,7 @@ class UserController extends Controller
                     $user->update();
                 }
             }
+            $this->redirect(array('user/edit/'.$user->user_id));
         }
         else {    
         }
@@ -63,20 +64,6 @@ class UserController extends Controller
             );
     }
     
-    public function actionSave(){
-        $risk = Yii::$app->request->post('risk');
-        $total = count($risk);
-        $i=0;
-        while($i<$total){
-            echo $risk[$i];
-            $i++;
-        }
-        /*$user = new User();
-        $user->user_name = 'Qiang';
-        $user->user_password = 'Qiang';
-        $user->user_group = 2;
-        $user->save();*/
-    }
     
     public function actionEdit($id){
         $user = new User();
@@ -109,7 +96,7 @@ class UserController extends Controller
                     $user->user_vrisk = $vrisk;
                     $user->update();
                 }
-                $this->redirect(array('user/index'));
+                $this->redirect(array('user/edit/'.$user->user_id));
             }    
         }    
         $risks = new Risk();
@@ -117,7 +104,37 @@ class UserController extends Controller
                'user'  => $user,
                'form_user' => $form_user,
                'risk'  => $risks,
-               'risks' => $risks->getAllRiskData()
+               'risks' => $risks->getAllRiskUserData($id)
+            ]
+        );
+    }
+    
+    public function actionRemove($id){
+        $user = new User();
+        $form_user = User::findOne($id);
+        if(!$form_user) $this->redirect(array('user/index'));
+        User::deleteAll('user_id = :user_id', [':user_id' => $id]); //delete user_id = $id from risk_user
+        RiskUser::deleteAll('user_id = :user_id',[':user_id' => $id]);
+        $this->redirect(array('user/index'));
+    }
+    
+    public function actionChpassword(){
+        $id = Yii::$app->session->get('user_id');
+        $user = new User();
+        $form_user = User::findOne($id);
+        if(!$form_user) $this->redirect(['user/chpassword/']);
+        
+        if ($user->load(Yii::$app->request->post())) {
+            $frisk = Yii::$app->request->post('risk');
+            if($user->getUserUpdate($id)){
+                Yii::$app->session->setFlash('msg','Password has been changed ');
+            }    
+        }    
+        $risks = new Risk();
+            return $this->render('form-password',[
+               'user'  => $user,
+               'form_user' => $form_user,
+               'risk'  => $risks
             ]
         );
     }

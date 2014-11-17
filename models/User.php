@@ -88,7 +88,7 @@ class User extends ActiveRecord {
             $user->user_name = $this->user_name;
             $user->user_password = $this->user_password;
             $user->user_group = 2;
-            $user2->save();
+            $user->save();
             return true;
         } else {
             return false;

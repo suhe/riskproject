@@ -29,8 +29,8 @@ AppAsset::register($this);
                 <span class="sr-only">Toggle navigation</span>
                 <span class="glyphicon glyphicon-user"></span>
             </button>
-            <a href="#" class="navbar-brand"><img src="/riskproject/web/img/logo.png" /></a>
-			<a class="navbar-brand" href="#"><i class="glyphicon glyphicon-signal"></i> Risk Register Final</a>
+            <a href="#" class="navbar-brand"><img src="<?=Url::to(['img/logo.png'])?>" /></a>
+			<a class="navbar-brand" href="<?=Url::to(['risk/index'])?>"><i class="glyphicon glyphicon-signal"></i> Risk Register Final</a>
 			<!--<a class="btn btn-default btn-sm active" type="submit" style="min-width:120px"><i class="glyphicon glyphicon-arrow-left"></i> Previous</a>-->
                         
                         <!--<a href="<?=BaseUrl::to('risk/index/1')?>" class="btn btn-primary btn-sm" type="submit" style="min-width:120px">Next <i class="glyphicon glyphicon-arrow-right"></i></a>-->
@@ -65,7 +65,7 @@ AppAsset::register($this);
 			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Howdy  <i class="glyphicon glyphicon-user"></i>  <?= Yii::$app->session->get('user_name')?></a>
 			  <ul class="dropdown-menu dropdown-bdo">
 				<li><a href="<?=Url::to(['user/index'])?>"> <i class="glyphicon glyphicon-user"></i> Risk User</a></li>
-                                <li><a href="<?=Url::to(['site/chpassword'])?>"> <i class="glyphicon glyphicon-wrench"></i> Change Password</a></li>
+                                <li><a href="<?=Url::to(['user/chpassword'])?>"> <i class="glyphicon glyphicon-wrench"></i> Change Password</a></li>
                                 <li><a href="<?=Url::to(['site/logout'])?>"> <i class="glyphicon glyphicon-remove-sign"></i> Logout</a></li>
 			  </ul>
 			 </li>

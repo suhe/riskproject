@@ -102,8 +102,13 @@ use yii\helpers\Url;
 						<div class="col-md-3">
 							<div class="panel panel-default">
 								<div class="panel-heading text-center"><strong>Control Rating</strong></div>
-								<div class="panel-body text-justify">
+								<div class="panel-body text-center">
 									<div class="form-group">
+										<?php if (!Yii::$app->session->get('user_id')) {
+											print Html::a(Yii::t('app','you must login'),['site/login'], ['class' => 'btn btn-primary','name' => 'back-button']);
+										} else {
+
+										?>
 										<select class="form-control input-sm" name="cr">
 											<option value="">Please Vote</option>
 											<option value="1">1</option>
@@ -117,6 +122,7 @@ use yii\helpers\Url;
 											<option value="9">9</option>
 											<option value="10">10</option>
 										</select>
+										<?php } ?>
 									</div>
 								</div>
 							</div>	
@@ -144,6 +150,7 @@ use yii\helpers\Url;
       <nav class='sidebar sidebar-menu-collapsed'>
       <?=Html::a('<span class="glyphicon glyphicon-align-justify"></span>','/riskproject/web/risk/index/'.($nav_id>=27?'1':'27'),array('title'=>$nav_id<27?'Next Slide':'Previous Slide'))?>	
       <!--<a href='#' id='justify-icon' title="Next Slide"><span class='glyphicon glyphicon-align-justify'></span></a>-->
+      <!--
       <ul>
         <?php foreach($nav_item as $key => $name){
 	?>
@@ -152,7 +159,16 @@ use yii\helpers\Url;
         </li>
 	<?php } ?>
         
-      </ul>
+      </ul>-->
+     <ul>
+	<?php
+	if($risk_item){
+	foreach($risk_item as $item){ ?>
+	<li <?=$nav_id==$item->risk_id?'class="active"':''?>>
+	<?= Html::a('<span class="glyphicon collapsed-element">'.$item->risk_no.'</span><span class="expanded-element">'.$item->risk_no.'</span>',['risk/index/'.$item->risk_id],array('class'=>'expandable'));?>
+	</li>
+	<?php }} ?>
+     </ul>
       
     </nav>
 </sidebar>
