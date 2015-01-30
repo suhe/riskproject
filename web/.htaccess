@@ -1,25 +1,3 @@
-SetEnv TZ "Asia/Jakarta"
-
-#<IfModule mod_rewrite.c>
-#    RewriteEngine On
-#    RewriteBase /riskproject/web/
-#    RewriteCond %{REQUEST_FILENAME} !-f
-#    RewriteCond %{REQUEST_FILENAME} !-d
-#    RewriteRule ^(.*)$ index.php?/$1 [L]
-    
-#</IfModule>
-
-#<IfModule !mod_rewrite.c>
-#    ErrorDocument 404 index.php
-#</IfModule>
-
-#<ifmodule mod_deflate.c>
-#AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
-#</ifmodule>
-RewriteEngine on
-
-RewriteBase /riskproject/web/
-
 # If a directory or a file exists, use the request directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
